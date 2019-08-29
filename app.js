@@ -1,28 +1,29 @@
 const express = require('express')
 const app = express()
-const http = require("http").createServer(app)
-const io = require("socket.io")(http);
 
-app.set('view engine','ejs');
-//middlewares
-app.use(express.static('public'));
-// The function is executed every time the app receives a request.
-app.use(function (req, res,next) {
-    console.log('Time:', new Date());
-    next();
-  })
+app.set('view engine', 'ejs')
 
-app.get("/",(req,res)=>{
+app.use(express.static('public'))
+
+app.get('/', (req, res) => {
     res.render('index')
-    //console.log("Check your browser!!")
-});
+})
+server = app.listen(3000)
 
-io.on('connection',(socket)=>{
-    console.log("A User got Connected on your App")
-    socket.on('disconnect',()=>{
-        console.log("User Disconnected")
+const io = require("socket.io")(server)
+
+io.on('connection', (socket) => {
+	console.log('A New User connected')
+
+	socket.username = "Anonymous"
+
+    socket.on('change_username', (data) => {
+        socket.username = data.username
     })
- });
-http.listen(3000);
-
-
+    socket.on('new_message', (data) => {
+        io.sockets.emit('new_message', {message : data.message, username : socket.username});
+    })
+    socket.on('typing', (data) => {
+    	socket.broadcast.emit('typing', {username : socket.username})
+    })
+})
