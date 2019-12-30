@@ -1,21 +1,13 @@
-vertical-align {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-  
-  * {
+
+  /* * {
       box-sizing: border-box;
-  }
+  } */
   
   html {
       height: 100%;
   }
   
   body {
-      margin: 0px;
       height: 100%;
       background-color: cornflowerblue;
   }
@@ -29,36 +21,13 @@ vertical-align {
       margin: 0px;
   }
   
-  div#change_username, section#input_zone {
-      border: 5px outset #8258FA;
-  }
-  
-  div#change_username {
-      height: 3%;
-      display: inline-block;
-      background-color: #BCA9F5;
-  }
-  
   section#chatroom {
-      border: 5px inset rgb(96, 49, 224);
       height: 85%;
       overflow: auto;
   }
   
-  section#input_zone {
-      height: 7%;
-      text-align: center;
-      background-color: rgb(69, 55, 109);
-  }
-  
-  .vertical-align {
-      position: relative;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-  }
-  
+
+
   input#username {
       font-family: 'Comfortaa', sans-serif;
   }
@@ -79,13 +48,75 @@ vertical-align {
   
   p.message {
       margin: 0px;
-      width: 100%;
+      width: 50%;
       height: 40px;
       font-size: 2vh;
       font-family: 'Comfortaa', sans-serif;
       padding: 1vh;
   }
-  
+  .message:nth-child(odd){
+
+    border-radius: 5px;
+    padding: 10px 18px;
+    position: relative;
+    margin: 10px;
+    max-width: 80%;
+    background-color: rgba(25,147,147,0.2);
+    float: left;
+    margin-left: 55px;
+    color:whitesmoke;
+ 
+}
+.message:nth-child(even){
+
+    border-radius: 5px;
+    padding: 10px 18px;
+    position: relative;
+    margin: 10px;
+    max-width: 80%;
+    background-color: rgba(13, 121, 121, 0.746);
+    float: left;
+    margin-left: 55px;
+    color:whitesmoke;
+ 
+}
+.message:before {
+    content: "\00a0";
+    display: block;
+    height: 16px;
+    width: 9px;
+    position: absolute;
+    bottom: -7.5px;
+  }
  .msg {
-    background-color:white;
+	background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
+	background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
+	background-repeat: no-repeat;
 } 
+.type_msg{
+    background-color: rgba(0,0,0,0.3) !important;
+    border:0 !important;
+    color:white !important;
+    height: 60px !important;
+    overflow-y: auto;
+}
+.type_msg:focus{
+    box-shadow:none !important;
+outline:0px !important;
+}
+
+.send_btn{
+	border-radius: 0 15px 15px 0 !important;
+	background-color: rgba(0,0,0,0.3) !important;
+    border:0 !important;
+    color: white !important;
+    cursor: pointer;
+    position: relative;
+    height: 60px !important;
+  
+}
+
+.card-footer{
+    border-radius: 0 0 15px 15px !important;
+        border-top: 0 !important;
+}
