@@ -12,7 +12,13 @@ $(function(){
  send_message.click(function(){
      socket.emit('new_message', {message : message.val()})
  })
-
+ 
+ message.keypress(function(evt){
+    var keycode = (evt.keyCode ? evt.keyCode : evt.which);
+    if(keycode == '13'){
+        socket.emit('new_message', {message : message.val()})   
+    }
+})
  socket.on("new_message", (data) => {
      feedback.html('');
      message.val('');
